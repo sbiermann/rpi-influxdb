@@ -18,7 +18,7 @@ Tags
 ----
 
     sbiermann/influxdb:latest -> influxdb 0.9
-    sbiermann/influxdb:0.9    -> influxdb 0.9
+    sbiermann/influxdb:0.9.0    -> influxdb 0.9
 
 Running your InfluxDB image
 --------------------------
