@@ -6,13 +6,13 @@ InfluxDB image
 Usage
 -----
 
-To create the image `sbiermann/influxdb`, execute the following command on rpi-influxdb folder:
+To create the image `sbiermann/rpi-influxdb`, execute the following command on rpi-influxdb folder:
 
-    docker build -t sbiermann/influxdb .
+    docker build -t sbiermann/rpi-influxdb .
 
 You can now push new image to the registry:
 
-    docker push sbiermann/influxdb
+    docker push sbiermann/rpi-influxdb
     
 Tags
 ----
@@ -25,7 +25,7 @@ Running your InfluxDB image
 
 Start your image binding the external ports `8083` and `8086` in all interfaces to your container. Ports `8090` and `8099` are only used for clustering and should not be exposed to the internet.
 
-    docker run -d -p 8083:8083 -p 8086:8086 sbiermann/influxdb
+    docker run -d -p 8083:8083 -p 8086:8086 sbiermann/rpi-influxdb
 
 
 Configuring your InfluxDB
@@ -39,4 +39,4 @@ Initially create Database
 -------------------------
 Use `-e PRE_CREATE_DB="db1;db2;db3"` to create database named "db1", "db2", and "db3" on the first time the container starts automatically. Each database name is separated by `;`. For example:
 
-```docker run -d -p 8083:8083 -p 8084:8084 -e PRE_CREATE_DB="db1;db2;db3" sbiermann/influxdb:latest```
+```docker run -d -p 8083:8083 -p 8084:8084 -e PRE_CREATE_DB="db1;db2;db3" sbiermann/rpi-influxdb:latest```
