@@ -63,7 +63,7 @@ if [ -n "${PRE_CREATE_DB}" ]; then
         echo "=> Database had been created before, skipping ..."
     else
         echo "=> Starting InfluxDB ..."
-        exec /opt/influxdb/influxd -config=${CONFIG_FILE} &
+        exec /usr/bin/influxd -config=${CONFIG_FILE} &
         PASS=${INFLUXDB_INIT_PWD:-root}
         arr=$(echo ${PRE_CREATE_DB} | tr ";" "\n")
 
@@ -71,7 +71,7 @@ if [ -n "${PRE_CREATE_DB}" ]; then
         RET=1
         while [[ RET -ne 0 ]]; do
             echo "=> Waiting for confirmation of InfluxDB service startup ..."
-            sleep 3 
+            sleep 3
             curl -k ${API_URL}/ping 2> /dev/null
             RET=$?
         done
@@ -80,7 +80,7 @@ if [ -n "${PRE_CREATE_DB}" ]; then
         for x in $arr
         do
             echo "=> Creating database: ${x}"
-            /opt/influxdb/influx -host=localhost -port=8086 -username=root -password="${PASS}" -execute="create database \"${x}\""
+            /usr/bin/influx -host=localhost -port=8086 -username=root -password="${PASS}" -execute="create database \"${x}\""
         done
         echo ""
 
@@ -94,5 +94,5 @@ fi
 
 echo "=> Starting InfluxDB ..."
 
-exec /opt/influxdb/influxd -config=${CONFIG_FILE}
+exec /usr/bin/influxd -config=${CONFIG_FILE}
 
