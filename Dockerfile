@@ -1,8 +1,8 @@
 FROM resin/rpi-raspbian:wheezy
-MAINTAINER Stefan Biermann <sb@ems-solutions.com> 
+MAINTAINER Stefan Biermann <sb@ems-solutions.com>
 
 # Install InfluxDB
-ENV INFLUXDB_VERSION 0.9.0
+ENV INFLUXDB_VERSION 0.9.6
 ADD src/influxdb_${INFLUXDB_VERSION}_armhf.deb /tmp/influxdb_${INFLUXDB_VERSION}_armhf.dep
 RUN dpkg -i /tmp/influxdb_${INFLUXDB_VERSION}_armhf.dep && \
   rm /tmp/influxdb_${INFLUXDB_VERSION}_armhf.dep && \
